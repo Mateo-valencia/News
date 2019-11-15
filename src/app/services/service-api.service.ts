@@ -15,6 +15,10 @@ const headers = new HttpHeaders({
 })
 export class ServiceApiService {
 
+  Page = 0;
+  PageActual = 0;
+  CategoryActual = '';
+
   constructor( private http: HttpClient) { }
 
   private construirURL<T>( query: string) {
@@ -23,11 +27,18 @@ export class ServiceApiService {
   }
 
   getTopHeadLines() {
-    return this.construirURL<RespuestaTopHeadLines>( `/top-headlines?country=us` );
+    this.Page++;
+    return this.construirURL<RespuestaTopHeadLines>( `/top-headlines?country=us&page=${ this.Page }` );
   }
 
   getTopHeadLinesCategory(Category: string) {
-    return this.construirURL<RespuestaTopHeadLines>( `/top-headlines?country=us&category=${ Category }`);
+    if (Category === this.CategoryActual) {
+      this.PageActual++;
+    } else {
+      this.PageActual = 1;
+      this.CategoryActual = Category;
+    }
+    return this.construirURL<RespuestaTopHeadLines>( `/top-headlines?country=us&category=${ Category }&page=${ this.PageActual }`);
   }
 
 }
