@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Article } from 'src/interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController } from '@ionic/angular';
-import { DatastorageService } from 'src/app/services/datastorage.service';
+import { DatastorageService } from '../../services/datastorage.service';
 
 @Component({
   selector: 'app-noticia',

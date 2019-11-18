@@ -6,7 +6,8 @@ import { Article } from '../../interfaces/interfaces';
   providedIn: 'root'
 })
 export class DatastorageService {
-  noticias1: Article[] = [];
+
+  public noticias: Article[] = [];
 
   constructor(private storage: Storage) {
     this.GetData();
@@ -14,12 +15,12 @@ export class DatastorageService {
 
   SetData( noticia: Article) {
 
-    //const existe = this.noticias.find( noti => noti.title === noticia.title );
-    console.log(this.noticias1);
-    //if (!existe) {
-      this.noticias1.unshift( noticia );
+    const existe = this.noticias.find( noti => noti.title === noticia.title );
+
+    if (!existe) {
+      this.noticias.unshift( noticia );
       this.storage.set( 'Favoritos', noticia );
-    //}
+    }
 
   }
 
@@ -27,7 +28,9 @@ export class DatastorageService {
 
     const favoritos = await this.storage.get('Favoritos');
 
-    this.noticias = favoritos;
+    if (favoritos) {
+      this.noticias = favoritos;
+    }
 
   }
 }

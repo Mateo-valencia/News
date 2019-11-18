@@ -11,7 +11,7 @@ import { IonicModule } from '@ionic/angular';
     NoticiasComponent,
     NoticiaComponent
   ],
-  exports:[
+  exports: [
     NoticiasComponent
   ],
   imports: [
