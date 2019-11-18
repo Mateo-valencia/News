@@ -1,9 +1,15 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header >
+  <ion-toolbar color="dark">
     <ion-title>
-      Tab Three
+      My Favorites
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content color="dark">
+
+  <!-- <ion-button color="primary" (click)="onClick()">Primary</ion-button> -->
+  <app-noticias [Articulos]="datastorage.noticias1"></app-noticias>
+
+  <h1 *ngIf="!datastorage.noticias">Not found favorites!</h1>
+</ion-content>

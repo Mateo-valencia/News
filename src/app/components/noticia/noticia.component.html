@@ -1,16 +1,22 @@
-<ion-card color="dark" [href]="noticia.url">
+<ion-card color="dark">
   <ion-card-header>
     <ion-card-subtitle>
       <span class="text-primary">{{i + 1}} .</span>
       <span class="noticia-source-name">{{noticia.source.name}}</span> 
+      <div class="noticia-more">
+        <ion-button fill="clear" (click)="LanzarMenu()">
+          <ion-icon slot="icon-only" name="more"></ion-icon>
+        </ion-button>
+      </div> 
     </ion-card-subtitle> 
-    <ion-card-title>{{noticia.title}}</ion-card-title>
+    <ion-card-title (click)="OpenNew()">{{noticia.title}}</ion-card-title>
+ 
   </ion-card-header>
   
-  <ion-img *ngIf="noticia.urlToImage" 
+  <ion-img (click)="OpenNew()" *ngIf="noticia.urlToImage" 
             [src]="noticia.urlToImage"></ion-img> 
 
-  <ion-img *ngIf="!noticia.urlToImage" 
+  <ion-img (click)="OpenNew()" *ngIf="!noticia.urlToImage" 
             src="https://semantic-ui.com/images/wireframe/image.png"></ion-img>
 
   <ion-card-content>

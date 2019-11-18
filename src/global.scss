@@ -35,3 +35,11 @@
  font-size: 12px;
  color: lightgrey;
 }
+.action-sheet-button, .action-sheet-title, .action-sheet-group{
+    background: var(--ion-color-dark)!important;
+    color: white !important;
+}
+
+.action-sheet-icon{
+    color: white !important;
+}
