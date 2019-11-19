@@ -7,28 +7,24 @@ import { Article } from '../../interfaces/interfaces';
 })
 export class DatastorageService {
 
-  public noticias: Article[] = [];
+  noticias: Article[] = [];
 
   constructor(private storage: Storage) {
     this.GetData();
   }
 
   SetData( noticia: Article) {
-
     const existe = this.noticias.find( noti => noti.title === noticia.title );
-
     if (!existe) {
       this.noticias.unshift( noticia );
-      this.storage.set( 'Favoritos', noticia );
+      this.storage.set( 'Favoritos', this.noticias );
     }
-
   }
 
   async GetData() {
-
     const favoritos = await this.storage.get('Favoritos');
 
-    if (favoritos) {
+    if ( favoritos ) {
       this.noticias = favoritos;
     }
 

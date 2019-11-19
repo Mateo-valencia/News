@@ -9,6 +9,7 @@
 <ion-content color="dark">
 
   <!-- <ion-button color="primary" (click)="onClick()">Primary</ion-button> -->
-  <app-noticias [Articulos]="datastorage.noticias"></app-noticias>
+  <app-noticias *ngIf="datastorage.noticias.length > 0" [Articulos]="datastorage.noticias"></app-noticias>
   <!-- <h1 *ngIf="!datastorage.noticias1">Not found favorites!</h1> -->
 </ion-content>
+ 
